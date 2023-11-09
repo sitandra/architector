@@ -16,14 +16,14 @@ public class ModelStore implements IModelChanger{
     public List<Camera> Cameras;
     private IModelChangedObserver[] changeObservers;
 
-    public ModelStore(IModelChangedObserver[] changeObservers) {
+    public ModelStore(IModelChangedObserver[] changeObservers) throws Exception {
         this.changeObservers = changeObservers;
         this.Models = new ArrayList<>();
         this.Scenes = new ArrayList<>();
         this.Flashes = new ArrayList<>();
         this.Cameras = new ArrayList<>();
         this.Models.add(new PoligonalModel(new ArrayList<Texture>()));
-        this.Scenes.add(new Scene());
+        this.Scenes.add(new Scene(0,this.Models,this.Flashes,this.Cameras));
         this.Flashes.add(new Flash());
         this.Cameras.add(new Camera());
     }
